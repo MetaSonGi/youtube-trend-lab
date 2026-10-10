@@ -31,7 +31,35 @@
     { title: '게임 신작 실황, 첫 보스전 노데미지 클리어', channel: '겜생겜사', views: 2310000, cat: '20' },
     { title: '제주도 2박 3일 뚜벅이 여행 코스 총정리', channel: '떠나자', views: 1890000, cat: '19' },
     { title: '개그맨들의 즉흥 콩트 대결, 빵 터졌습니다 😂', channel: '웃음 공장', views: 4760000, cat: '23' },
-  ].map((v, i) => ({ ...v, id: 'demo' + i, thumb: null }));
+  ].map((v, i) => ({ ...v, id: 'demo' + i }));
+
+  /* 데모용 플레이스홀더 썸네일 생성 */
+  function makeThumb(title, cat) {
+    const colors = {
+      '10': ['#5b1a8a', '#2a0e4a'], '28': ['#0e2a5e', '#081a3a'], '26': ['#0b3d2e', '#062a20'],
+      '17': ['#5e3a0e', '#3a2408'], '22': ['#0e3a4a', '#082a35'], '2': ['#3a3f4a', '#22252c'],
+      '15': ['#5e0e3a', '#3a0823'], '27': ['#1a2a5e', '#101a3a'], '24': ['#5e0e0e', '#3a0808'],
+      '20': ['#2a0e4a', '#1a082e'], '19': ['#0e4a4a', '#083232'], '23': ['#5e4a0e', '#3a2f08'],
+    };
+    const [a, b] = colors[cat] || ['#2d3748', '#161b22'];
+    const c = document.createElement('canvas'); c.width = 320; c.height = 180;
+    const x = c.getContext('2d');
+    const g = x.createLinearGradient(0, 0, 320, 180);
+    g.addColorStop(0, a); g.addColorStop(1, b);
+    x.fillStyle = g; x.fillRect(0, 0, 320, 180);
+    x.fillStyle = 'rgba(255,255,255,0.92)'; x.font = 'bold 20px sans-serif';
+    const words = title.slice(0, 26).split(' ');
+    let line = '', ly = 80;
+    for (const w of words) {
+      if ((line + ' ' + w).trim().length > 14) { x.fillText(line.trim(), 16, ly); ly += 28; line = w; }
+      else line += ' ' + w;
+    }
+    x.fillText(line.trim(), 16, ly);
+    x.fillStyle = 'rgba(255,255,255,0.55)'; x.font = '16px sans-serif';
+    x.fillText('▶ 데모', 16, 156);
+    return c.toDataURL('image/png');
+  }
+  DEMO.forEach((v) => { v.thumb = makeThumb(v.title, v.cat); });
 
   /* ---------- API 키 ---------- */
   const saved = localStorage.getItem(KEY_STORE);
