@@ -1,8 +1,16 @@
-# 유튜브 트렌드 랩
+# 📺 유튜브 트렌드 랩 | YouTube Trend Lab
+
+> 인기 영상·뜨는 키워드·조회수 실시간 분석  
+> Real-time trending video and keyword analysis
+
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen?style=flat-square)](https://metasongi.github.io/youtube-trend-lab/) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square)
+
+🌐 **Live:** https://metasongi.github.io/youtube-trend-lab/
+
+---
 
 지금 유튜브에서 뜨는 영상·키워드·조회수를 실시간 분석하는 웹앱.
 
-🌐 **바로 실행:** https://metasongi.github.io/youtube-trend-lab/
 
 ## 기능
 
@@ -26,3 +34,9 @@
 
 - Vanilla JS + Fetch API
 - API 키는 localStorage에만 저장
+
+---
+
+## English Summary
+
+Real-time trending video and keyword analysis.
